@@ -1,0 +1,56 @@
+{
+  "name": "@globio/sdk",
+  "version": "0.2.4",
+  "description": "Official JavaScript/TypeScript SDK for Globio",
+  "homepage": "https://globio.stanl.ink/docs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/globio-technologies/globio-js-sdk"
+  },
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "jsr": {
+    "name": "@globio/sdk",
+    "exports": {
+      ".": "./src/index.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --minify",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.59.0",
+    "@types/node": "^20.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.0.0"
+  },
+  "keywords": [
+    "globio",
+    "firebase-alternative",
+    "backend-as-a-service",
+    "baas",
+    "realtime",
+    "database",
+    "auth",
+    "storage"
+  ]
+}
