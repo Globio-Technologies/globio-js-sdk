@@ -1,0 +1,27 @@
+name: Publish to JSR
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: 'v1.x'
+
+      - name: Install deps
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish to JSR
+        run: npx jsr publish --token ${{ secrets.JSR_TOKEN }} --allow-dirty
